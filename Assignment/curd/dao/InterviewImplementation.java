@@ -1,6 +1,6 @@
 package com.xworkz.curd.dao;
 
-import com.xworkz.curd.dao.InterviewDAO;
+//import com.xworkz.curd.dao.InterviewDAO;
 import com.xworkz.curd.dto.InterviewDTO;
 
 public class InterviewImplementation extends InterviewDAO {
@@ -27,7 +27,7 @@ public class InterviewImplementation extends InterviewDAO {
 		 }else {
 		 for(int i=0;i<this.getIdto().length;i++)
 		 {
-			 if(this.idto[i]!=null &&this.idto[i].equals(dto)) {
+			 if(this.getIdto()[i]!=null &&this.getIdto()[i].equals(dto)) {
 				 System.out.println("object already exist");
 				 return true;
 			 	}
@@ -40,9 +40,9 @@ public class InterviewImplementation extends InterviewDAO {
 				System.out.println("DTO is null we can't update");
 				return false;
 			}else {
-				for(this.index=0;this.index<this.idto.length;index++) {
-					if(this.idto[index].getInterviewerID()==dto.getCandidateID()) {
-						this.idto[index]=dto1;
+				for(this.index=0;this.index<this.getIdto().length;index++) {
+					if(this.getIdto()[index].getInterviewerID()==dto.getCandidateID()) {
+						this.getIdto()[index]=dto1;
 						System.out.println("object updated");
 						return true;
 					}
@@ -56,10 +56,10 @@ public class InterviewImplementation extends InterviewDAO {
 				System.out.println("object list is empty");
 				return false;
 		 }else {
-			 for(this.index=0;this.index<this.idto.length;this.index++) {
-				 if(this.idto[index].equals(dto))
+			 for(this.index=0;this.index<this.getIdto().length;this.index++) {
+				 if(this.getIdto()[index].equals(dto))
 				 {
-					 this.idto[index]=null;
+					 this.getIdto()[index]=null;
 					 System.out.println("object deleted");
 					 return true;
 				 }
@@ -69,6 +69,19 @@ public class InterviewImplementation extends InterviewDAO {
 		return false;
 	
 	 }
+	@Override
+	public boolean readDTO() {
+		if(this.getIdto()!=null) {
+			for(this.index=0;this.index<this.getIdto().length;this.index++) {
+				System.out.println("array object is:"+this.getIdto()[index]);
+				return true;
+			}
+		}else {
+			System.out.println("object array is null");
+		}
+		
+		return false;
+	}
 	
 }
 
