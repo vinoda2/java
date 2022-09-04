@@ -10,6 +10,7 @@ public class EcommerceDAOImplements implements EcommerceDAO {
 		return edto;
 	}
 	
+	//saving object details to the object array
 	@Override
 	public boolean saveDTO(EcommerceDTO ecommerceDTO) {
 		if(ecommerceDTO==null) {
@@ -21,11 +22,11 @@ public class EcommerceDAOImplements implements EcommerceDAO {
 			System.out.println("object saved:"+this.index);
 			return true;
 		}else {
-			System.out.println("object array is full");
+			throw new ArrayIndexOutOfBoundsException("object array is full");
 		}
-		return false;
 	}
-
+	
+	//deleting object from object Array
 	@Override
 	public boolean dateleDTO(EcommerceDTO ecommerceDTO) {
 		if(edto==null) {
@@ -42,9 +43,8 @@ public class EcommerceDAOImplements implements EcommerceDAO {
 		}
 		return false;
 	}
-
+	//updating object 
 	@Override
-
 	public boolean updateDTO(EcommerceDTO ecommerceDTO,EcommerceDTO ecommerceDTO1) {
 		if(edto.equals(null)) {
 			System.out.println("object array is nulll");
@@ -55,14 +55,12 @@ public class EcommerceDAOImplements implements EcommerceDAO {
 					 edto[this.index]=ecommerceDTO1;
 					 System.out.println("object updated");
 					 return true;
-				}
-
-				
+				 }	
 			}
 		}
 		return false;
 	}
-
+	//reading objects from object array
 	@Override
 	public boolean readDTO() {
 		if(edto.equals(null)) {
@@ -73,8 +71,7 @@ public class EcommerceDAOImplements implements EcommerceDAO {
 			System.out.println(edto[this.index]);
 		}
 	}
-	return false;
-	
+		return false;
 	}
 }
 

@@ -18,7 +18,6 @@ public class EcommerceRunner {
 		service.validateData(ecommerceDTO);
 		dao.saveDTO(ecommerceDTO);
 		
-		//dao.dateleDTO(ecommerceDTO);
 		
 		ProductDTO productDTO1 = new ProductDTO(" sd", " ", true);
 		EcommerceDTO ecommerceDTO1 = new EcommerceDTO("sankasta", "sankasta@1", 54684,"mysore", 100, productDTO1);
@@ -39,8 +38,15 @@ public class EcommerceRunner {
 		EcommerceDTO ecommerceDTO4 = new EcommerceDTO("sankasta", "sankasta@1", 54684,"mysore", 60, productDTO4);
 		service.validateData(ecommerceDTO4);
 		dao.saveDTO(ecommerceDTO4);
+		
+		//calling read method
 		dao.readDTO();
 		
+		//calling deleteDTO
+		dao.dateleDTO(ecommerceDTO);
+		
+		//calling read method
+		dao.readDTO();
 	}
 	
 	

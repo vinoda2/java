@@ -8,7 +8,6 @@ public class EcommerceServiceImp implements EcommerceService{
 	private EcommerceDAO dao;
 	
 	public EcommerceServiceImp(EcommerceDAO dao) {
-		super();
 		this.dao = dao;
 	}
 	@Override

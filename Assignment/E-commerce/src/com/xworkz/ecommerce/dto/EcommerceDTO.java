@@ -52,7 +52,12 @@ public class EcommerceDTO implements Serializable {
 	public void setCustomerBase(long customerBase) {
 		this.customerBase = customerBase;
 	}
-	
+	public ProductDTO getProductDTO() {
+		return productDTO;
+	}
+	public void setProductDTO(ProductDTO productDTO) {
+		this.productDTO = productDTO;
+	}
 	
 	@Override
 	public String toString() {
@@ -98,16 +103,4 @@ public class EcommerceDTO implements Serializable {
 			return false;
 		return true;
 	}
-
-
-	public ProductDTO getProductDTO() {
-		return productDTO;
-	}
-
-
-	public void setProductDTO(ProductDTO productDTO) {
-		this.productDTO = productDTO;
-	}
-
-	
 }
