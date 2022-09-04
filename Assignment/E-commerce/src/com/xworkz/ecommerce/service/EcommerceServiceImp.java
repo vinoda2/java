@@ -2,58 +2,55 @@ package com.xworkz.ecommerce.service;
 
 import com.xworkz.ecommerce.dao.EcommerceDAO;
 import com.xworkz.ecommerce.dto.EcommerceDTO;
+import com.xworkz.ecommerce.exception.InvalidData;
 
 public class EcommerceServiceImp implements EcommerceService{
-	
 	private EcommerceDAO dao;
-	public EcommerceServiceImp(EcommerceDTO dto) {
-		this.dao=dao;
+	
+	public EcommerceServiceImp(EcommerceDAO dao) {
+		super();
+		this.dao = dao;
 	}
 	@Override
 	public boolean validateData(EcommerceDTO ecommerceDTO) {
-		int count=checkLen(EcommerceDTO.getCustomerBase());
-		if(count==0) {
-			System.out.println("u don't have a customer base");
-		}else if(count<=10) {
-			System.out.println("you have low customer base  ");
+		if(ecommerceDTO!=null) {
+			if(ecommerceDTO.getUserName().isEmpty()
+				||ecommerceDTO.getUserName().equals(null)
+				||ecommerceDTO.getUserName().isBlank()
+				||ecommerceDTO.getUserName().length()<8
+				||ecommerceDTO.getPassWord().isBlank()
+				||ecommerceDTO.getPassWord().isEmpty()
+				||ecommerceDTO.getPassWord().equals(null)
+				||ecommerceDTO.getPassWord().length()<8
+				||ecommerceDTO.getShopRegisterNumber()==0){
+					throw new InvalidData("invalid data");
+					
+				}if(ecommerceDTO.getCustomerBase()<50
+						||ecommerceDTO.getLocation().isBlank()){
+					throw new InvalidData("you can't start bussiness");
+					
+				}if(ecommerceDTO.getProductDTO().isProductAvailability()==false) {
+					throw new InvalidData("stack is not available");
+				}if(ecommerceDTO.getProductDTO().getProductID().equals(null)) {
+					throw new InvalidData("invalid ID");
+				}if(ecommerceDTO.getProductDTO().getProductName().equals(null)) {
+					throw new InvalidData("invalid product name");
+					
+				}
+				else {
+					System.out.println("username is:"+ecommerceDTO.getUserName());
+					System.out.println("password valid:"+ecommerceDTO.getPassWord());
+					System.out.println("your customer base is:"+ecommerceDTO.getCustomerBase());
+					System.out.println("location is:"+ecommerceDTO.getLocation());
+					
+					return true;
+				}
+			
 		}else {
-			System.out.println("happy!! your eligiable for business");
-		}
-
-		
-		int count1=checkLen(ecommerceDTO.getRegisterNumber());
-		if(count1==0) {
-			System.out.println("invalid register number");
-		}else if(count<=10) {
-			System.out.println("valid registered number");
-		}else {
-			System.out.println("wrong registered number you enter ");
-		}
-		
-		if(ecommerceDTO.getShopName().isBlank()||ecommerceDTO.getShopName().isEmpty()) {
-			System.out.println("invalid name");
-		}else {
-			System.out.println("valid");
-		}
-		
-		if(ecommerceDTO.getProductDTO().getProductName().isBlank()) {
-			System.out.println("inavlid name");
+			System.out.println("object is null");
 		}
 		
 		return false;
-	}
-	private int checkLen(long i) {
-		long num=i;
-		int count=0;
-		//System.out.println(num);
-		while(num!=0) {
-		 	num=num%10;
-		 	num=num/10;
-		 	count++;	
-		}
-		//System.out.println(count);
-		return count;
-		
 	}
 
 }

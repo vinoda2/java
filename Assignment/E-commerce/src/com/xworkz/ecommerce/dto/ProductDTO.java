@@ -3,34 +3,37 @@ package com.xworkz.ecommerce.dto;
 public class ProductDTO {
 	
 	private String productName;
-	private String ProductCode;
-	private boolean productAvailablility;
+	private String productID;
+	private boolean productAvailability;
 	
-	public ProductDTO(String productName, String productCode, boolean productAvailablility) {
+	public ProductDTO(String productName, String productID, boolean productAvailability) {
 		this.productName = productName;
-		this. ProductCode = productCode;
-		this.productAvailablility = productAvailablility;
+		this.productID = productID;
+		this.productAvailability = productAvailability;
 	}
-	
 	public String getProductName() {
 		return productName;
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getProductCode() {
-		return ProductCode;
+	public String getProductID() {
+		return productID;
 	}
-	public void setProductCode(String productCode) {
-		ProductCode = productCode;
+	public void setProductID(String productID) {
+		this.productID = productID;
 	}
-	public boolean isProductAvailablility() {
-		return productAvailablility;
+	public boolean isProductAvailability() {
+		return productAvailability;
 	}
-	public void setProductAvailablility(boolean productAvailablility) {
-		this.productAvailablility = productAvailablility;
+	public void setProductAvailability(boolean productAvailability) {
+		this.productAvailability = productAvailability;
 	}
-	
+	@Override
+	public String toString() {
+		return "ProductDTO [productName=" + productName + ", productID=" + productID + ", productAvailability="
+				+ productAvailability + "]";
+	}
 	
 	
 }

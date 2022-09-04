@@ -28,22 +28,53 @@ public class EcommerceDAOImplements implements EcommerceDAO {
 
 	@Override
 	public boolean dateleDTO(EcommerceDTO ecommerceDTO) {
-		// TODO Auto-generated method stub
+		if(edto==null) {
+				System.out.println("object array is null");
+		}
+		else{
+			for(this.index=0;this.index<edto.length;this.index++) {
+				if(edto[this.index].equals(ecommerceDTO)) {
+					edto[this.index]=null;
+					System.out.println("object deleted");
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
 	@Override
-	public boolean updateDTO(EcommerceDTO ecommerceDTO) {
-		// TODO Auto-generated method stub
+
+	public boolean updateDTO(EcommerceDTO ecommerceDTO,EcommerceDTO ecommerceDTO1) {
+		if(edto.equals(null)) {
+			System.out.println("object array is nulll");
+			return false;
+		}else {
+			 for(this.index=0;this.index<edto.length;this.index++) {
+				 if(edto[this.index]==ecommerceDTO) {
+					 edto[this.index]=ecommerceDTO1;
+					 System.out.println("object updated");
+					 return true;
+				}
+
+				
+			}
+		}
 		return false;
 	}
 
 	@Override
-	public boolean readDTO(EcommerceDTO ecommerceDTO) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean readDTO() {
+		if(edto.equals(null)) {
+			System.out.println("object array is null");
 	}
-
+	else{
+		for(this.index=0;this.index<edto.length;this.index++) {
+			System.out.println(edto[this.index]);
+		}
+	}
+	return false;
 	
-
+	}
 }
+
